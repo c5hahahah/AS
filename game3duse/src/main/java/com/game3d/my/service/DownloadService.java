@@ -3,6 +3,7 @@ package com.game3d.my.service;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -18,6 +19,7 @@ import com.game3d.my.utils.JsonUtils;
 import java.util.List;
 
 public class DownloadService extends Service {
+
     String[] urls = {"http://www.3dmgame.com/sitemap/api.php?row=10&typeid=181&paging=1&page=1",
             "http://www.3dmgame.com/sitemap/api.php?row=10&typeid=182&paging=1&page=1",
             "http://www.3dmgame.com/sitemap/api.php?row=10&typeid=183&paging=1&page=1",
@@ -35,7 +37,6 @@ public class DownloadService extends Service {
     FileCache fileCache;
     MemoryCache memoryCache;
     SqliteHander hander;
-
     public DownloadService() {
     }
 
