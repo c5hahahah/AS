@@ -161,7 +161,7 @@ public class WenzhangOtherFragment extends Fragment implements Callback{
 
         }).start();
     }
-
+        // 回调的接口
     @Override
     public void refresh() {
         adapter.notifyDataSetChanged();

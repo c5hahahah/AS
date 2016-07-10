@@ -98,7 +98,7 @@ public class WenzhangItemAdapter extends BaseAdapter {
                             public void run() {
                                 if (litpic.equals(imageView.getTag().toString())) {
                                     imageView.setImageBitmap(bitmap);
-                                    callback.refresh();
+                                   // callback.refresh();
                                 }
                             }
                         });
@@ -110,7 +110,7 @@ public class WenzhangItemAdapter extends BaseAdapter {
                                 public void run() {
                                     if (litpic.equals(imageView.getTag().toString())) {
                                         imageView.setImageBitmap(fromfile);
-                                        callback.refresh();
+                                        //callback.refresh();
                                     }
                                 }
                             });
