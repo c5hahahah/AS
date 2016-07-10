@@ -36,6 +36,9 @@ public class WelcomeActivity extends AppCompatActivity {
 //                Log.i("12345",isConnect+"---");
                 if(isConnect){
                     Intent intent = new Intent(WelcomeActivity.this, DownloadService.class);
+                    if(isConnect()){
+                        intent.putExtra("first","1");
+                    }
                     startService(intent);
                 }
             }

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.game3d.my.Callback;
 import com.game3d.my.adapter.WenzhangFirstFragmentViewpagerAdapter;
 import com.game3d.my.adapter.WenzhangItemAdapter;
 import com.game3d.my.costumview.WenzhangFirstFragmentViewPager;
@@ -35,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  * Created by my on 2016/7/6.
  */
 @SuppressLint("ValidFragment")
-public class WenzhangFirstFragment extends Fragment {
+public class WenzhangFirstFragment extends Fragment implements Callback{
     Activity activity;
 
     @SuppressLint("ValidFragment")
@@ -91,7 +92,7 @@ public class WenzhangFirstFragment extends Fragment {
         handler = new Handler();
         data = new ArrayList<>();
         sqliteHander = new SqliteHander(getContext());
-        listadapter = new WenzhangItemAdapter(getContext(), data, handler);
+        listadapter = new WenzhangItemAdapter(getContext(), data, handler,this);
         listView = pullToRefreshListView.getRefreshableView();
         listView.setAdapter(listadapter);
         setData();
@@ -153,6 +154,11 @@ public class WenzhangFirstFragment extends Fragment {
                 });
             }
         }).start();
+    }
+
+    @Override
+    public void refresh() {
+        adapter.notifyDataSetChanged();
     }
 
     //pull的 监听

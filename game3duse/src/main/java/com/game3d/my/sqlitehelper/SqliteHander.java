@@ -11,12 +11,12 @@ import com.game3d.my.modles.News;
 /**
  * Created by my on 2016/7/6.
  */
-public class SqliteHander {
-    private Context context;
-    private OpenHelper helper;
-    public SqliteHander(Context context){
-        this.context = context;
-        helper = new OpenHelper(context);
+        public class SqliteHander {
+            private Context context;
+            private OpenHelper helper;
+            public SqliteHander(Context context){
+                this.context = context;
+                helper = new OpenHelper(context);
     }
     /*
         向数据库中增加News数据

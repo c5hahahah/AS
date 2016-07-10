@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.game3d.my.Callback;
 import com.game3d.my.cache.FileCache;
 import com.game3d.my.cache.MemoryCache;
 import com.game3d.my.game3duse.R;
@@ -25,18 +26,20 @@ import java.util.logging.SimpleFormatter;
  */
 public class WenzhangItemAdapter extends BaseAdapter {
     List<HashMap<String, String>> data;
+    Callback callback;
     Context context;
     MemoryCache memoryCache;
     FileCache fileCache;
     ImageView imageView;
     Handler handler;
 
-    public WenzhangItemAdapter(Context context, List<HashMap<String, String>> data, Handler handler) {
+    public WenzhangItemAdapter(Context context, List<HashMap<String, String>> data, Handler handler,Callback callback) {
         this.context = context;
         this.data = data;
         this.handler = handler;
         memoryCache = new MemoryCache();
         fileCache = new FileCache();
+        this.callback = callback;
     }
 
     @Override
@@ -83,38 +86,41 @@ public class WenzhangItemAdapter extends BaseAdapter {
         //获取图片
         imageView = holder.iv;
         imageView.setTag(litpic);
-        imageView.setImageResource(R.drawable.nopictrue_default);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (memoryCache.getFromMemory(litpic) != null) {
-                    final Bitmap bitmap = memoryCache.getFromMemory(litpic);
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (litpic.equals(imageView.getTag().toString())) {
-                                imageView.setImageBitmap(bitmap);
-                            }
-                        }
-                    });
-                } else {
-                    try {
-                        final Bitmap fromfile = fileCache.getFromFile(litpic);
+        if(!litpic.contains("www.3dmgame.com")) {
+            imageView.setImageResource(R.drawable.nopictrue_default);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    if (memoryCache.getFromMemory(litpic) != null) {
+                        final Bitmap bitmap = memoryCache.getFromMemory(litpic);
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
                                 if (litpic.equals(imageView.getTag().toString())) {
-                                    imageView.setImageBitmap(fromfile);
+                                    imageView.setImageBitmap(bitmap);
+                                    callback.refresh();
                                 }
                             }
                         });
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } else {
+                        try {
+                            final Bitmap fromfile = fileCache.getFromFile(litpic);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (litpic.equals(imageView.getTag().toString())) {
+                                        imageView.setImageBitmap(fromfile);
+                                        callback.refresh();
+                                    }
+                                }
+                            });
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
-        }).start();
-
+            }).start();
+        }
         return convertView;
     }
 

@@ -74,7 +74,7 @@ public class WenzhangFragment extends Fragment implements RadioGroup.OnCheckedCh
         f7 = new WenzhangOtherFragment(196);
         f8 = new WenzhangOtherFragment(197);
         f9 = new WenzhangOtherFragment(199);
-        f10 = new WenzhangOtherFragment(25);
+        f10 = new WenzhangOtherFragment(26);
         list.add(f1);
         list.add(f2);
         list.add(f3);
