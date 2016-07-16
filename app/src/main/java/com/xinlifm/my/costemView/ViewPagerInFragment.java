@@ -20,6 +20,6 @@ public class ViewPagerInFragment extends ViewPager {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         getParent().requestDisallowInterceptTouchEvent(true);
-        return true;
+        return super.dispatchTouchEvent(ev);
     }
 }

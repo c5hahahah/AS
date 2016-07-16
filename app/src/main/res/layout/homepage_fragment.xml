@@ -630,7 +630,7 @@
                 android:orientation="horizontal"
                 >
                 <LinearLayout
-                    android:id="@+id/homepage_fragment_ll_tuijian01"
+                    android:id="@+id/homepage_fragment_ll_diantaituijian01"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -654,7 +654,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/homepage_fragment_ll_tuijian02"
+                    android:id="@+id/homepage_fragment_ll_diantaituijian02"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -678,7 +678,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/homepage_fragment_ll_tuijian03"
+                    android:id="@+id/homepage_fragment_ll_diantaituijian03"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -702,7 +702,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/homepage_fragment_ll_tuijian04"
+                    android:id="@+id/homepage_fragment_ll_diantaituijian04"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
