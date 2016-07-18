@@ -46,12 +46,13 @@ public class WelcomeActivity extends AppCompatActivity {
                         finish();
                     }else{
                         //進入主界面
-                        Intent toMain = new Intent(WelcomeActivity.this,MainActivity.class);
-                        startActivity(toMain);
-                        finish();
-                    }
+                    Intent toMain = new Intent(WelcomeActivity.this,MainActivity.class);
+                    startActivity(toMain);
+                    finish();
+                }
                 }else{
                     Toast.makeText(WelcomeActivity.this,"请链接网络",Toast.LENGTH_LONG).show();
+
                 }
 
             }

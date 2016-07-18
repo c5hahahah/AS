@@ -24,6 +24,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     ImageView iv1,iv2,iv3;
     GuideViewPagerAdapter viewPagerAdapter;
     Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,10 +80,9 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("isFirstUse",false);
                 editor.commit();
-                Intent intent = new Intent(GuideActivity.this,MainActivity.class);
+                Intent intent = new Intent(this,MainActivity.class);
                 startActivity(intent);
                 finish();
-                break;
         }
     }
     //Viewpager监听

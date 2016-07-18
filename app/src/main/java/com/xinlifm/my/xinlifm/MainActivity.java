@@ -3,6 +3,7 @@ package com.xinlifm.my.xinlifm;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -29,10 +30,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     LinearLayout ll_homepage,ll_discovery,ll_community,ll_mine;
     ImageView iv_homepage,iv_discovery,iv_community,iv_mine;
     MainViewPagerAdapter viewPagerAdapter;
+
+
+    FragmentManager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        manager = getSupportFragmentManager();
         initFragment();
         initView();
         initListener();
@@ -41,7 +46,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void initFragment(){
         fragmentList = new ArrayList<>();
         f_homepage = new HomepageFragment();
-        f_community = new CommunityFragment();
+        f_community = new CommunityFragment(manager);
         f_discovery = new DiscoveryFragment();
         f_mine = new MineFragment();
         fragmentList.add(f_homepage);
